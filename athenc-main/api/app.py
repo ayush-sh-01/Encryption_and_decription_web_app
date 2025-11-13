@@ -26,7 +26,8 @@ logger = logging.getLogger(__name__)
 
 # IMPORTANT: Ensure your project structure has a 'static' folder 
 # containing index.html, app.js, and any CSS files.
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="../static"), name="static")
+
 
 # CORS setup (allows your frontend to talk to your backend)
 app.add_middleware(
@@ -61,7 +62,8 @@ def derive_key(password: str, salt: bytes) -> bytes:
 async def index():
     """Serves the main frontend page (index.html)."""
     # NOTE: Assuming static/index.html exists relative to app.py
-    index_path = os.path.join(os.path.dirname(__file__), "static", "index.html")
+    index_path = os.path.join(os.path.dirname(__file__), "..", "static", "index.html")
+
     try:
         with open(index_path, "r", encoding="utf-8") as f:
             return HTMLResponse(f.read())
