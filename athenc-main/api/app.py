@@ -159,6 +159,9 @@ async def decrypt(file: UploadFile = File(...), password: str = Form(...)):
         }
     )
 
+# ✅ Add this at the bottom of app.py (for Vercel serverless entry)
+handler = app
+
 if __name__ == '__main__':
     import uvicorn
     # NOTE: Run with 'uvicorn app:app --reload' in a terminal for better development
